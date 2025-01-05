@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turf Owner Approval</title>
+    <link rel="stylesheet" href="{% static 'admincss/usermanage.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1> Renting History</h1>
+            <p>view all product Renting details below.</p>
+        </header>
+
+        <!-- User Management Table -->
+        <section class="user-table-section">
+            <table class="user-table">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Turf</th>
+                        <th>Product</th>
+                        <th>Booking Date</th>
+                        <th>Payment Status</th>
+                        <th>Amount</th>
+                        <th>Is Returned</th>
+                       
+                      
+                      
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for rental in rentals %}
+                    <tr>
+                        <td>{{ rental.user.username}}</td>
+                        <td>{{ rental.turf.turfname }}</td>
+                        <td>{{ rental.product.productname }}</td>
+                        <td>{{ rental.booking_date }}</td>
+                        <td>{{ rental.payment_status }}</td>
+                        <td>{{ rental.amount }}</td>
+                        <td>{{ rental.isreturn }}</td>
+                       
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="9">No rental records available.</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+            </table>
+        </section>
+    </div>
+</body>
+</html>

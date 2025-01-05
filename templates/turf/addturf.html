@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Turf</title>
+    <link rel="stylesheet" href="{% static 'turfcss/style.css' %}">
+    <link rel="stylesheet" href="{% static 'turfcss/turfhome.css' %} ">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <h1>Turf Owner Dashboard</h1>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="{% url 'turfapp:view_turf' %}">View</a></li>
+                <li><a href="{% url 'turfapp:loadturf' %}">Back</a></li>
+
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="form-header">
+            <h2><i class="fas fa-football-ball"></i> Manage Turf Details</h2>
+            <p>Add or update the details of your turf below.</p>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+               
+            </div>
+            <div class="form-group">
+                <label for="turfname"><i class="fas fa-map"></i> Turf Name</label>
+                <input type="text" id="turfname" name="turfname" placeholder="Enter Turf Name" required>
+            </div>
+            <div class="form-group">
+                <label for="phone"><i class="fas fa-phone"></i> Phone</label>
+                <input type="text" id="phone" name="phone" placeholder="Enter Phone Number" required>
+            </div>
+            <div class="form-group">
+                <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter Email Address" required>
+            </div>
+            <div class="form-group">
+                <label for="address"><i class="fas fa-home"></i> Address</label>
+                <textarea id="address" name="address" placeholder="Enter Turf Address" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="location"><i class="fas fa-map-marker-alt"></i> Location</label>
+                <input type="text" id="location" name="location" placeholder="Enter Turf Location" required>
+            </div>
+            <div class="form-group">
+                <label for="image"><i class="fa-solid fa-image"></i> Image</label>
+                <input type="file" id="image" name="image"  required>
+            </div>
+            <div class="form-group">
+                <label for="rent"><i class="fas fa-dollar-sign"></i> Rent</label>
+                <input type="number" step="0.01" id="rent" name="rent" placeholder="Enter Turf Rent" required>
+            </div>
+            <div class="form-group">
+                <label for="opentime"><i class="fa-regular fa-clock"></i> Opening Time</label>
+                <input type="text" id="opentime" name="opentime" placeholder="Enter Opening Time" required>
+            </div>
+                <div class="form-group">
+                    <label for="closingtime"><i  class="fa-solid fa-clock"></i> Closing time</label>
+                    <input type="text" id="closingtime" name="closingtime" placeholder="Enter Closing Time" required>
+                </div>
+                <div class="form-group">
+                    <label for="slots"><i class="fa-regular fa-clock"></i> Add Time Slots:</label>
+                    <div id="slot-container" style="position: relative;">
+                        <div class="slot-input" style="display: flex; align-items: center;">
+                            <input type="text" name="slots" placeholder="Enter Slot (e.g., 9:00-10:00)" required>
+                            <button type="button" id="add-slot-button" class="arrow-btn"></button>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                <input type="hidden" value="{{ request.session.user_id }}" name="userid">
+
+            <button type="submit" class="btn"><i class="fas fa-save"></i> Save Details</button>
+        </form>
+
+    </div>
+    <script>
+        document.getElementById('add-slot-button').addEventListener('click', function () {
+            var container = document.getElementById('slot-container');
+            var newInput = document.createElement('div');
+            newInput.classList.add('slot-input');
+            newInput.innerHTML = '<input type="text" name="slots" placeholder="Enter Slot (e.g., 9:00-10:00)" required>';
+            container.appendChild(newInput);
+        });
+        
+    </script>
+    
+</body>
+</html>

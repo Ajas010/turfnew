@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Turf</title>
+    <link rel="stylesheet" href="{% static 'turfcss/style.css' %}">
+    <link rel="stylesheet" href="{% static 'turfcss/turfhome.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <h1>Turf Owner Dashboard</h1>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="#"></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container" style="max-width: 70%;">
+        <a href="{% url 'turfapp:loadturf' %}" class="back-arrow">
+            <i class="fas fa-arrow-left"></i> Go Back
+        </a>
+        <h2><i class="fas fa-list"></i> Renting History</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>User</th>
+                        <th>Product</th>
+                        <th>Turf</th>
+                        <th>Booking Date</th>
+                        <th>Amount</th>
+                        <th>Payment Status</th>
+                        <th>Return Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for rent in rented_products %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ rent.user.username }}</td>
+                        <td>{{ rent.product.productname }}</td>
+                        <td>{{ rent.turf.turfname }}</td>
+                        <td>{{ rent.booking_date }}</td>
+                        <td>{{ rent.amount }}</td>
+                        <td>{{ rent.payment_status }}</td>
+                        <td>{{ rent.isreturn|yesno:"Returned,Not Returned" }}</td>
+                        <td>
+                            {% if not rent.isreturn %}
+                            <form action="{% url 'turfapp:return_product' rent.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit">Return Product</button>
+                            </form>
+                            
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="9">No renting history found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turf Owner Dashboard</title>
+    <link rel="stylesheet" href="{% static 'turfcss/turfhome.css' %} ">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <h1>Turf Owner Dashboard</h1>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="{% url 'turfapp:turf_profile' %}">Profile</a></li>
+
+                <li><a href="{% url 'userapp:userlogin' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="welcome-section">
+            <h2>Welcome, {{request.session.user}}</h2>
+
+            <p>Manage your turf and bookings with ease!</p>
+        </section>
+
+        <section class="card-section">
+            <div class="card">
+                <i class="fas fa-plus-square icon"></i>
+                <h3>Add Turf Details</h3>
+                <p>Upload your turf details, photos, and available time slots.</p>
+                <a href="{% url 'turfapp:add_turf' %}" class="btn">Add Turf</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-edit icon"></i>
+                <h3>Manage Products</h3>
+                <p>Add and manage sports equipment or products for rent or sale.</p>
+                <a href="{% url 'turfapp:add_product' %}" class="btn">Manage Products</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-calendar-alt icon"></i>
+                <h3>View Bookings</h3>
+                <p>View and manage all turf bookings in one place.</p>
+                <a href="{% url 'turfapp:turf_owner_booking_history' %}" class="btn">View Bookings</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-wallet icon"></i>
+                <h3>View Renting</h3>
+                <p>Keep track of all your earnings and Renting history.</p>
+                <a href="{% url 'turfapp:turf_owner_rent_history' %}" class="btn">View Renting</a>
+            </div>
+
+         
+        
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turf Owner Approval</title>
+    <link rel="stylesheet" href="{% static 'admincss/usermanage.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>View All Turf</h1>
+            <p>view all turf details below.</p>
+        </header>
+
+        <!-- User Management Table -->
+        <section class="user-table-section">
+            <table class="user-table">
+                <thead>
+                    <tr>
+                        <th>Turf Name</th>
+                        <th>Owner Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Location</th>
+                        <th>Rent</th>
+                        <th>Open Time</th>
+                        <th>Close Time</th>
+                      
+                    </tr>
+                </thead>
+                <tbody>
+                        {% for turf in turf_list %}
+                        <tr>
+                            <td>{{ turf.turfname }}</td>
+                            <td>{{ turf.Ownername }}</td>
+                            <td>{{ turf.phone }}</td>
+                            <td>{{ turf.email }}</td>
+                            <td>{{ turf.address }}</td>
+                            <td>{{ turf.location }}</td>
+                            <td>{{ turf.rent }}</td>
+                            <td>{{ turf.opentime }}</td>
+                            <td>{{ turf.closingtime }}</td>
+                          
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="11">No turf available.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+            </table>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'admincss/adminhome.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Turf Booking Admin</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="{% url 'admin_turf_approval' %}"><i class="fas fa-users"></i> Manage Users</a></li>
+                <li><a href="{% url 'view_turf_admin' %}"><i class="fas fa-map-marker-alt"></i> Manage Turfs</a></li>
+                <li><a href="{% url 'view_bookings_admin' %}"><i class="fas fa-calendar-check"></i> View Bookings</a></li>
+                <li><a href="{% url 'view_products_admin' %}"><i class="fas fa-box"></i> View Products</a></li>
+                <li><a href="{% url 'view_rentals_admin' %}"><i class="fas fa-money-bill-wave"></i> View Renting</a></li>
+                {% comment %} <li><a href=""><i class="fas fa-comments"></i> View Feedback</a></li> {% endcomment %}
+                <li><a href="{% url 'userapp:userlogin' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a></li>
+
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <h1>Welcome, Admin</h1>
+                <p>Your overview of the system</p>
+            </header>
+
+            <section class="dashboard">
+                <div class="card">
+                    <i class="fas fa-users"></i>
+                    <h3>Users</h3>
+                    <p>Manage registered users</p>
+                    <a href="{% url 'admin_turf_approval' %}">View Details</a>
+                </div>
+                <div class="card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Turfs</h3>
+                    <p>Manage turf locations</p>
+                    <a href="{% url 'view_turf_admin' %}">View Turf</a>
+                </div>
+                <div class="card">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Bookings</h3>
+                    <p>View all bookings</p>
+                    <a href="{% url 'view_bookings_admin' %}">View Booking</a>
+                </div>
+                <div class="card">
+                    <i class="fas fa-box"></i>
+                    <h3>Products</h3>
+                    <p>View and manage products</p>
+                    <a href="{% url 'view_products_admin' %}">View Details</a>
+                </div>
+                <div class="card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Renting</h3>
+                    <p>Monitor all transactions</p>
+                    <a href="{% url 'view_rentals_admin' %}">View Details</a>
+                </div>
+                {% comment %} <div class="card">
+                    <i class="fas fa-comments"></i>
+                    <h3>Feedback</h3>
+                    <p>View user feedback</p>
+                    <a href="">View Details</a>
+                </div> {% endcomment %}
+            </section>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+/* General Styling */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #f9f9f9;
+    color: #333;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #34495e;
+}
+
+.header p {
+    font-size: 1.2em;
+    color: #7f8c8d;
+}
+
+/* Table */
+.user-table-section {
+    overflow-x: auto;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.user-table thead {
+    background: #34495e;
+    color: white;
+}
+
+.user-table th,
+.user-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.user-table tbody tr:hover {
+    background: #f2f2f2;
+}
+
+.user-table th {
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.user-table .no-data {
+    text-align: center;
+    font-size: 1.2em;
+    color: #7f8c8d;
+    padding: 20px 0;
+}
+
+/* Badges */
+.badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.badge.approved {
+    background: #2ecc71;
+    color: white;
+}
+
+.badge.pending {
+    background: #e67e22;
+    color: white;
+}
+.badge.rejected {
+    background: #bd1f1f;
+    color: white;
+}
+
+/* Buttons */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn.approve-btn {
+    background: #2ecc71;
+}
+
+.btn.reject-btn {
+    background: #e74c3c;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
