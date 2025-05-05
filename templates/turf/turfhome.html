@@ -9,27 +9,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header class="header">
-        <div class="logo">
-            <h1>Turf Owner Dashboard</h1>
+    <!-- <header class="header"> -->
+        <nav class="navbar">
+
+        <div class="logo"><i class="fas fa-futbol"></i>
+            Pitch Time 
         </div>
-        <nav class="nav">
+        <!-- <nav class="nav"> -->
             <ul>
                 <li><a href="{% url 'turfapp:turf_profile' %}">Profile</a></li>
 
                 <li><a href="{% url 'userapp:userlogin' %}">Logout</a></li>
             </ul>
         </nav>
-    </header>
+    <!-- </header> -->
 
-    <main class="main-content">
+    <!-- <main class="main-content"> -->
+        <div class="dashboard">
+
         <section class="welcome-section">
+            <main>
             <h2>Welcome, {{request.session.user}}</h2>
 
             <p>Manage your turf and bookings with ease!</p>
         </section>
+        <div class="actions">
 
-        <section class="card-section">
+        <!-- <section class="card-section"> -->
             <div class="card">
                 <i class="fas fa-plus-square icon"></i>
                 <h3>Add Turf Details</h3>
@@ -55,9 +61,11 @@
                 <a href="{% url 'turfapp:turf_owner_rent_history' %}" class="btn">View Renting</a>
             </div>
 
+        </div>    
+
          
         
-        </section>
+        <!-- </section> -->
     </main>
 </body>
 </html>
